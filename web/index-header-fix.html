@@ -59,7 +59,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
   <link href="assets/corporate/css/style-responsive.css" rel="stylesheet">
   <link href="assets/corporate/css/themes/red.css" rel="stylesheet" id="style-color">
   <link href="assets/corporate/css/custom.css" rel="stylesheet">
-  <link href="assets/corporate/css/modal_view.css" rel="stylesheet">
+ <!-- <link href="assets/corporate/css/modal_view.css" rel="stylesheet"> -->
   <!-- Theme styles END -->
 </head>
 <!-- Head END -->
@@ -109,9 +109,9 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
             </li>
             <li><a href="#">Place order</a></li>
             <li>
-                <a href="#0">
-                Login/Signup
-              </a>
+                <a href="#" data-target="#loginModal" data-toggle="modal">
+                    Login / Signup
+                </a>
             </li>
             
 
@@ -122,97 +122,43 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
     </div>
     <!-- Header END -->
     <!--Window modal view start-->
-    	<div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
-		<div class="cd-user-modal-container"> <!-- this is the container wrapper -->
-			<ul class="cd-switcher">
-				<li><a href="#0">Sign in</a></li>
-				<li><a href="#0">New account</a></li>
-			</ul>
-
-			<div id="cd-login"> <!-- log in form -->
-				<form class="cd-form">
-					<p class="fieldset">
-						<label class="image-replace cd-email" for="signin-email">E-mail</label>
-						<input class="full-width has-padding has-border" id="signin-email" type="email" placeholder="E-mail">
-						<span class="cd-error-message">Error message here!</span>
-					</p>
-
-					<p class="fieldset">
-						<label class="image-replace cd-password" for="signin-password">Password</label>
-						<input class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="Password">
-						<a href="#0" class="hide-password">Hide</a>
-						<span class="cd-error-message">Error message here!</span>
-					</p>
-
-					<p class="fieldset">
-						<input type="checkbox" id="remember-me" checked>
-						<label for="remember-me">Remember me</label>
-					</p>
-
-					<p class="fieldset">
-						<input class="full-width" type="submit" value="Login">
-					</p>
-				</form>
-				
-				<p class="cd-form-bottom-message"><a href="#0">Forgot your password?</a></p>
-				<!-- <a href="#0" class="cd-close-form">Close</a> -->
-			</div> <!-- cd-login -->
-
-			<div id="cd-signup"> <!-- sign up form -->
-				<form class="cd-form">
-					<p class="fieldset">
-						<label class="image-replace cd-username" for="signup-username">Username</label>
-						<input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="Username">
-						<span class="cd-error-message">Error message here!</span>
-					</p>
-
-					<p class="fieldset">
-						<label class="image-replace cd-email" for="signup-email">E-mail</label>
-						<input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="E-mail">
-						<span class="cd-error-message">Error message here!</span>
-					</p>
-
-					<p class="fieldset">
-						<label class="image-replace cd-password" for="signup-password">Password</label>
-						<input class="full-width has-padding has-border" id="signup-password" type="text"  placeholder="Password">
-						<a href="#0" class="hide-password">Hide</a>
-						<span class="cd-error-message">Error message here!</span>
-					</p>
-
-					<p class="fieldset">
-						<input type="checkbox" id="accept-terms">
-						<label for="accept-terms">I agree to the <a href="#0">Terms</a></label>
-					</p>
-
-					<p class="fieldset">
-						<input class="full-width has-padding" type="submit" value="Create account">
-					</p>
-				</form>
-
-				<!-- <a href="#0" class="cd-close-form">Close</a> -->
-			</div> <!-- cd-signup -->
-
-			<div id="cd-reset-password"> <!-- reset password form -->
-				<p class="cd-form-message">Lost your password? Please enter your email address. You will receive a link to create a new password.</p>
-
-				<form class="cd-form">
-					<p class="fieldset">
-						<label class="image-replace cd-email" for="reset-email">E-mail</label>
-						<input class="full-width has-padding has-border" id="reset-email" type="email" placeholder="E-mail">
-						<span class="cd-error-message">Error message here!</span>
-					</p>
-
-					<p class="fieldset">
-						<input class="full-width has-padding" type="submit" value="Reset password">
-					</p>
-				</form>
-
-				<p class="cd-form-bottom-message"><a href="#0">Back to log-in</a></p>
-			</div> <!-- cd-reset-password -->
-			<a href="#0" class="cd-close-form">Close</a>
-		</div> <!-- cd-user-modal-container -->
-	</div> <!-- cd-user-modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" >
+        <div class="modal-dialog">
+            <div class="modal-content" style="background-color:#F8F6F0;border-radius: 5px !important">
+                
+                <div class="modal-header">
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close" style="border:none;background: none">
+                        <i class="fa fa-times" style="color:#01a066;font-size:30px"></i>
+                    </button>
+                    <center><h3 style="color:#00B778"><b>Login / Signup</b></h3></center> 
+                </div>
+                
+                <div class="modal-body" >
+                    <form>
+                    <div class="form-group">
+                      <i class="fa fa-envelope" aria-hidden="true" style="color: #19C986;font-size: 22px;"></i>
+                      <label for="email">Email:</label>
+                      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" style="border-radius: 5px !important">
+                    </div>
+                    <div class="form-group">
+                      <i class="fa fa-key" aria-hidden="true" style="color: #19C986;font-size: 22px;"></i>
+                      <label for="pwd">Password:</label>
+                      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd" style="border-radius: 5px !important">
+                    </div>
+                        <center> <button type="submit" class="btn btn-primary btn-lg" style="border-radius: 5px !important">Login</button></center>
+                  </form>
+                </div>
+                
+                <div class="modal-footer">
+                    
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
         <!--End of window model-->
+        
     <!-- BEGIN SLIDER -->
     <div class="page-slider margin-bottom-40">
         <div id="carousel-example-generic" class="carousel slide carousel-slider">
