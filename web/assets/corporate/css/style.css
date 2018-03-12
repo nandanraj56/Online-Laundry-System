@@ -1333,6 +1333,7 @@ div.content-form-page {
 	color: #aaa;
 	font: 14px Arial, sans-serif;
 	border-radius: 0;
+        
 }
 .content-form-page .form-control:focus {
 	box-shadow: none;
@@ -3079,4 +3080,25 @@ Styler Panel
 
 .fancybox-opened {
   z-index: 100001;
+}
+/* made by nandan for rounding of corners*/
+.edgeround{
+   border-radius: 5px !important; 
+}
+/*searchbox nr*/
+#searchForm {
+	position:absolute;
+  	top:35%;
+}
+/*search end nr*/
+/* made by nandan for putting fontawesome images inside input*/
+.insideimage{
+    font-family: FontAwesome !important;
+    
+    
+}
+/*For making search cennter*/
+.incenter{
+    /*margin: 0 auto;*/
+    width:78% ;
 }
