@@ -139,6 +139,14 @@ Misc tools
 	margin-top: 10px !important;
 }
 
+.margin-top-20 {
+	margin-top: 20px !important;
+}
+
+.margin-top-30 {
+	margin-top: 30px !important;
+}
+
 .margin-left-0 {
   margin-left: 0 !important;
 }
@@ -3097,8 +3105,15 @@ Styler Panel
     
     
 }
-/*For making search cennter*/
+/*For making search center*/
 .incenter{
     /*margin: 0 auto;*/
     width:78% ;
+}
+/*For making outline*/
+.outline-box{
+    outline: 1px solid orange;box-shadow: 0 0 3pt 2pt grey;padding: 20px;
+}
+.outline-box-noshadow{
+    outline: 1px solid orange;padding: 20px;
 }

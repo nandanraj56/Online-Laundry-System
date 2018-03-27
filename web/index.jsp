@@ -1,14 +1,9 @@
+<%-- 
+    Document   : index
+    Created on : 13 Mar, 2018, 1:54:53 PM
+    Author     : nandanraj56
+--%>
 <!DOCTYPE html>
-<!--
-Template: Metronic Frontend Freebie - Responsive HTML Template Based On Twitter Bootstrap 3.3.4
-Version: 1.0.0
-Author: KeenThemes
-Website: http://www.keenthemes.com/
-Contact: support@keenthemes.com
-Follow: www.twitter.com/keenthemes
-Like: www.facebook.com/keenthemes
-Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
--->
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
 <!--[if !IE]><!-->
@@ -18,7 +13,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 <!-- Head BEGIN -->
 <head>
   <meta charset="utf-8">
-  <title>Metronic Frontend (Header Fixed)</title>
+  <title>Oceno</title>
 
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -66,98 +61,22 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 
 <!-- Body BEGIN -->
 <body class="corporate">
-    
-    <!-- BEGIN HEADER -->
-    <div class="header">
-      <div class="container">
-        <a class="site-logo" href="index.html"><img src="assets/corporate/img/logos/logo.png" alt="Oceno Laundry"></a>
-
-        <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
-
-        <!-- BEGIN NAVIGATION -->
-        <div class="header-navigation pull-right font-transform-inherit">
-          <ul>
-            <li class="dropdown active">
-              <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
-                Home 
-                
-              </a>
-                
-              <ul class="dropdown-menu">
-                <li><a href="index.html">Home Default</a></li>
-                <li class="active"><a href="index-header-fix.html">Home with Header Fixed</a></li>
-                <li><a href="index-without-topbar.html">Home without Top Bar</a></li>
-              </ul>
-            </li>
-            
-            <li>
-                <a href="#">
-             
-                Services
-              </a>
-            </li>
-            <li>
-                <a href="#">
-             
-                Track order
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                Help 
-              </a>
-            </li>
-            <li><a href="#">Place order</a></li>
-            <li>
-                <a href="#" data-target="#loginModal" data-toggle="modal">
-                    Login / Signup
-                </a>
-            </li>
-            
-
-          </ul>
-        </div>
-        <!-- END NAVIGATION -->
-      </div>
-    </div>
-    <!-- Header END -->
-    <!--Window modal view start-->
-    <div class="modal fade" id="loginModal" tabindex="-1" style="padding-top: 60px;">
-        <div class="modal-dialog">
-            <div class="modal-content edgeround" style="background-color:#F8F6F0;">
-                
-                <div class="modal-header">
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close" style="border:none;background: none">
-                        <i class="fa fa-times" style="color:#01a066;font-size:30px"></i>
-                    </button>
-                    <center><h3 style="color:#00B778"><b>Login / Signup</b></h3></center> 
-                </div>
-                
-                <div class="modal-body" >
-                    <form>
-                    <div class="form-group">
-                      <i class="fa fa-envelope" aria-hidden="true" style="color: #19C986;font-size: 22px;"></i>
-                      <label for="email">Email:</label>
-                      <input type="email" class="form-control edgeround" id="email" placeholder="Enter email" name="email" >
-                    </div>
-                    <div class="form-group">
-                      <i class="fa fa-key" aria-hidden="true" style="color: #19C986;font-size: 22px;"></i>
-                      <label for="pwd">Password:</label>
-                      <input type="password" class="form-control edgeround" id="pwd" placeholder="Enter password" name="pwd">
-                    </div>
-                        <center> <button type="submit" class="btn btn-primary btn-lg edgeround" >Login</button></center>
-                  </form>
-                </div>
-                
-                <div class="modal-footer">
-                    
-                </div>
-            </div>
-        </div>
+    <%
+        String namesessioncheck=(String)session.getAttribute("namesession");
+        //String emailsession=(String)session.getAttribute("emailsession");
         
         
-    </div>
-        <!--End of window modal-->
+        
+        
+        %>
+        <% if(namesessioncheck==null){%>
+              <%@include file="before-login-header.jsp" %>
+       <% }else{%>
+             <%@include file="user-header.jsp" %>
+        <%}
+
+        %>
+   
         
     <!-- BEGIN SLIDER -->
     <div class="page-slider margin-bottom-40">
@@ -192,28 +111,27 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                     </div>
                 </div>
             </div>
+            
             <!--Start searchbox-->
-       
          <div class="container incenter">
-               <form id="searchForm" class=" form-inline" style="background-color: red">
+               <form id="searchForm" class=" form-inline edgeround" style="background-color: rgba(255, 0, 0, 0.2);padding: 2px !important;">
                   <div class="form-group-lg input-group-lg ">
-                      
-                        <select class="form-control" id="city" required="required" style="margin-left: 40px">
+                        <select class="form-control" id="city" required="required" style="margin: 20px">
                             <option>Indore</option>
                         </select>
-                        <select class="form-control" id="region" required="required" style="margin-left: 40px">
+                        <select class="form-control" id="region" required="required" style="margin: 20px">
+                            <option>All</option>
                             <option>Vijay Nagar</option>
                             <option>Bapat</option>
                             <option>Bhawarkua</option>
                             <option>Dewas Naka</option>
                         </select>
-                        
-                        <input class="insideimage form-control " type="submit" value="&#xf002" style="margin-left: 40px">
+                        <input class="insideimage form-control " type="submit" value="&#xf002" style="margin: 20px">
                   </div>
                </form>
            </div>
-            
            <!--Search box end-->
+           
             <!-- Controls -->
             <a class="left carousel-control carousel-control-shop carousel-control-frontend" href="#carousel-example-generic" role="button" data-slide="prev">
                 <i class="fa fa-angle-left" aria-hidden="true"></i>
@@ -344,78 +262,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
       </div>
     </div>
 
-    <!-- BEGIN PRE-FOOTER -->
-    <div class="pre-footer">
-      <div class="container">
-        <div class="row">
-          <!-- BEGIN BOTTOM ABOUT BLOCK -->
-          <div class="col-md-4 col-sm-6 pre-footer-col">
-            <h2>About us</h2>
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam sit nonummy nibh euismod tincidunt ut laoreet dolore magna aliquarm erat sit volutpat.</p>
-
-            <div class="photo-stream">
-              <h2>Photos Stream</h2>
-              <ul class="list-unstyled">
-                <li><a href="javascript:;"><img alt="" src="assets/pages/img/people/img5-small.jpg"></a></li>
-                <li><a href="javascript:;"><img alt="" src="assets/pages/img/works/img1.jpg"></a></li>
-                <li><a href="javascript:;"><img alt="" src="assets/pages/img/people/img4-large.jpg"></a></li>
-                <li><a href="javascript:;"><img alt="" src="assets/pages/img/works/img6.jpg"></a></li>
-                <li><a href="javascript:;"><img alt="" src="assets/pages/img/works/img3.jpg"></a></li>
-                <li><a href="javascript:;"><img alt="" src="assets/pages/img/people/img2-large.jpg"></a></li>
-                <li><a href="javascript:;"><img alt="" src="assets/pages/img/works/img2.jpg"></a></li>
-                <li><a href="javascript:;"><img alt="" src="assets/pages/img/works/img5.jpg"></a></li>
-                <li><a href="javascript:;"><img alt="" src="assets/pages/img/people/img5-small.jpg"></a></li>
-                <li><a href="javascript:;"><img alt="" src="assets/pages/img/works/img1.jpg"></a></li>
-                <li><a href="javascript:;"><img alt="" src="assets/pages/img/people/img4-large.jpg"></a></li>
-                <li><a href="javascript:;"><img alt="" src="assets/pages/img/works/img6.jpg"></a></li>
-                <li><a href="javascript:;"><img alt="" src="assets/pages/img/works/img3.jpg"></a></li>
-                <li><a href="javascript:;"><img alt="" src="assets/pages/img/people/img2-large.jpg"></a></li>
-                <li><a href="javascript:;"><img alt="" src="assets/pages/img/works/img2.jpg"></a></li>
-              </ul>                    
-            </div>
-          </div>
-          <!-- END BOTTOM ABOUT BLOCK -->
-
-          <!-- BEGIN BOTTOM CONTACTS -->
-          <div class="col-md-4 col-sm-6 pre-footer-col">
-            <h2>Our Contacts</h2>
-            <address class="margin-bottom-40">
-              35, Lorem Lis Street, Indore<br>
-              Madhay Pradesh, India<br>
-              Phone: 91X XXX XXXX<br>
-              Fax: 91X XXX XXXX<br>
-              Email: <a href="mailto:oceneolaundry@gmail.com">oceneolaundry@gmail.com</a><br>
-              
-            </address>
-
-            <div class="pre-footer-subscribe-box pre-footer-subscribe-box-vertical">
-              <h2>Newsletter</h2>
-              <p>Subscribe to our newsletter and stay up to date with the latest news and deals!</p>
-              <form action="#">
-                <div class="input-group">
-                  <input type="text" placeholder="youremail@mail.com" class="form-control">
-                  <span class="input-group-btn">
-                    <button class="btn btn-primary" type="submit">Subscribe</button>
-                  </span>
-                </div>
-              </form>
-            </div>
-          </div>
-          <!-- END BOTTOM CONTACTS -->
-
-          <!-- BEGIN TWITTER BLOCK --> 
-          <div class="col-md-4 col-sm-6 pre-footer-col">
-              <a href="index.html"><img class="img-responsive" src="assets/pages/img/footerlogo.png" alt="Oceno Laundry" alt="Oceno laundry"></a>
-            
-          </div>
-          <!-- END TWITTER BLOCK -->
-        </div>
-      </div>
-    </div>
-    <!-- END PRE-FOOTER -->
-
-    
-
+    <%@include file="footer.jsp"%>
     <!-- Load javascripts at bottom, this will reduce page load time -->
     <!-- BEGIN CORE PLUGINS (REQUIRED FOR ALL PAGES) -->
     <!--[if lt IE 9]>
@@ -437,8 +284,8 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
         jQuery(document).ready(function() {
             Layout.init();    
             Layout.initOWL();
-            Layout.initTwitter();
-            Layout.initFixHeaderWithPreHeader(); /* Switch On Header Fixing (only if you have pre-header) */
+           // Layout.initTwitter();
+           // Layout.initFixHeaderWithPreHeader(); /* Switch On Header Fixing (only if you have pre-header) */
             Layout.initNavScrolling();
         });
     </script>
@@ -448,6 +295,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
         pause: null
     });
     </script>
+    
     <!-- END PAGE LEVEL JAVASCRIPTS -->
 </body>
 <!-- END BODY -->
