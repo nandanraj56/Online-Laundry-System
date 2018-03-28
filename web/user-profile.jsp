@@ -60,6 +60,7 @@
         String email=(String)session.getAttribute("emailsession");
         String phone=(String)session.getAttribute("phonesession");
         String pass=(String)session.getAttribute("passwordsession");
+        String address=(String)session.getAttribute("addresssession");
         if(name==null){
                   response.sendRedirect("index.jsp");
        }else{%>
@@ -89,7 +90,7 @@
                     <h3>Password:</h3>
                     <h5><%out.print("********");%></h5><hr>
                     <h3>Address:</h3>
-                    <h5><%out.print("Dummy");%></h5>
+                    <h5><%out.print(address);%></h5>
                 </div>
                 
                 <div id="editdetail" style="display:none">
@@ -104,7 +105,7 @@
                         <h3>Password:</h3> 
                         <h5><input type="password" value="<%out.print(pass);%>" name="pwd" ></h5><hr>
                         <h3>Address:</h3> 
-                        <h5><input type="text" value="<%out.print("dummy");%>" name="address"></h5> 
+                        <h5><input type="text" value="<%out.print(address);%>" name="address"></h5> 
                        <input class="btn  edgeround btn-primary" type="submit" value="Update"> 
                    </form>
                 </div>

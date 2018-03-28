@@ -50,6 +50,7 @@ public class logincheck extends HttpServlet {
                     session.setAttribute("phonesession",rs.getString(2));
                     session.setAttribute("emailsession",rs.getString(3));
                     session.setAttribute("passwordsession",rs.getString(4));
+                    session.setAttribute("addresssession",rs.getString(5));
                     
                     out.print("true");
                     

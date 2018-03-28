@@ -9,6 +9,9 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -33,16 +36,15 @@ public class reg extends HttpServlet {
             String phone=request.getParameter("phone");
             String email=request.getParameter("email1");
             String pass=request.getParameter("pwd1");
-            PreparedStatement pt=con.prepareStatement("insert into reg values(?,?,?,?)");
+            PreparedStatement pt=con.prepareStatement("insert into reg values(?,?,?,?,'Not set')");
             pt.setString(1,name);
             pt.setString(2,phone);
             pt.setString(3,email);
             pt.setString(4,pass);
-            PreparedStatement pt1=con.prepareStatement("insert into address(email) values(?)");
-            pt1.setString(1,email);
+            out.println("Address");
             int a;
             a = (int)pt.executeUpdate();
-            pt1.executeUpdate();
+            
             //out.println(a);
             if(a>0){
                 //out.println("<center><p style=\"color:green;\">Registration Done.Please login!</p></center>");
@@ -54,6 +56,12 @@ public class reg extends HttpServlet {
         }
         catch(Exception e){
             
+        }
+        try
+        {
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(logincheck.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

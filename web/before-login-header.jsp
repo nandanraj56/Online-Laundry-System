@@ -66,7 +66,7 @@
         <div class="header-navigation pull-right font-transform-inherit">
           <ul>
             <li>
-              <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
+              <a href="index.jsp">
                 Home 
               </a>
                
@@ -104,7 +104,7 @@
     </div>
     
     <!--Window modal view start-->
-    <div class="modal fade" id="loginModal" tabindex="-1" style="padding-top: 60px;">
+    <div class="modal fade" id="loginModal" data-backdrop="static" tabindex="-1" style="padding-top: 60px;">
         <div class="modal-dialog">
             <div class="modal-content edgeround" style="background-color:#F8F6F0;">
                 
@@ -211,6 +211,7 @@
     </script>
      <!--For ajax login javascript start-->
    <script type="text/javascript">
+   
        function userLogin(){
            
            var email=document.loginform.email.value;

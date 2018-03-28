@@ -33,16 +33,17 @@ public class UserDetailUpdate extends HttpServlet {
             String phone=request.getParameter("phone");
             String email=(String)session.getAttribute("emailsession");
             String pass=request.getParameter("pwd");
-            //String address=request.getParameter("address");
+            String address=request.getParameter("address");
             //String passs=(String)session.getAttribute("passwordsession");
-            PreparedStatement pt=con.prepareStatement("update reg set name=?,phone=?,password=? where email=?");
+            PreparedStatement pt=con.prepareStatement("update reg set name=?,phone=?,password=?,address=? where email=?");
            // PreparedStatement pt1=con.prepareStatement("update useraddress set address=? where email=?");
             
             pt.setString(1,name);
             pt.setString(2,phone);
             
             pt.setString(3,pass);
-            pt.setString(4,email);
+            pt.setString(4,address);
+            pt.setString(5,email);
             int a=pt.executeUpdate();
             
             if(a==1){
@@ -53,6 +54,7 @@ public class UserDetailUpdate extends HttpServlet {
                 session.setAttribute("namesession",name);
                 session.setAttribute("phonesession",phone);
                 session.setAttribute("passwordsession",pass);
+                session.setAttribute("addresssession",address);
             }
             else{
                 out.println("<script type=\"text/javascript\">");

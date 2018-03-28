@@ -62,11 +62,17 @@
 </head>
 <%
         String name=(String)session.getAttribute("namesession");
-        String email=(String)session.getAttribute("emailsession");
-        String phone=(String)session.getAttribute("phonesession");
-        String pass=(String)session.getAttribute("passwordsession");
+        String address=(String)session.getAttribute("addresssession");
         if(name==null){%>
                   <%@include file="before-login-header.jsp"%>
+                  <script type="text/javascript">
+                    $(document).ready(function () {
+
+                    $('#loginModal').modal('show');
+
+                    });
+                  </script>
+                  
       <% }else{%>
         <%@include file="user-header.jsp" %>
             <%}
@@ -74,23 +80,41 @@
   %>
 <!-- Head END -->
     <body>
-        <!--<div class="col-lg-offset-1">
-            
-            <div class="col-lg-5">
-                <h3 class="left">Merchant Brand name:</h3>
-                <img class="img-responsive img-thumbnail" src="assets/pages/img/product1.jpg" alt="image">
-
+       
+        <div class="modal fade" id="addressModal" data-backdrop="static" tabindex="-1" style="padding-top: 60px;">
+        <div class="modal-dialog">
+            <div class="modal-content edgeround" style="background-color:#F8F6F0;">
+                
+                <div class="modal-header">
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close" style="border:none;background: none">
+                        <i class="fa fa-times" style="color:#01a066;font-size:30px"></i>
+                    </button>
+                    
+                        <h4>Pickup Address: </h4>
+                     
+                </div>
+                
+                <div class="modal-body" >
+                    <div class="form-group">
+                    <label for="comment">Enter Full Address:</label>
+                    <form action="UserAddress">
+                        <textarea class="form-control" rows="5" id="address" name="address"><%out.println(address);%></textarea>
+                        <center><input type="submit" value="Done" class="btn btn-primary btn-lg edgeround margin-top-20"></center>
+                    </form>
+                    
+                    </div>
+                    
+                </div>
+                
+                <div class="modal-footer">
+                    
+                </div>
             </div>
-            
-            <div class="col-lg-5 col-md-5 col-sm-5 sidebar2">
-                <h1>jkjhj</h1>
-            </div>
-            <div class="outline-box-noshadow margin-top-10 left">
-                    <h4 class="left">About:-</h4>
-            </div>
-             
-        </div>-->
+        </div>
         
+        
+    </div>
+        <!--End of window modal-->
         
     <div class="main">
       <div class="container">
@@ -148,9 +172,9 @@
          <pre>Women        : Rs-450 / Kgs</pre>
          <pre>Woolen       : Rs-350 / Kgs</pre>
          <!--End of rates-->
-         <div class="margin-top-10"><strong>Pickup address:</strong>Not Set</div><br>
-         <button class="btn-primary btn-lg edgeround">Change address</button>
-         <button style="float: right" class="btn-primary btn-lg edgeround">Proceed</button>
+         <div class="margin-top-10"><strong>Pickup address: </strong><%out.println(address);%></div><br>
+         <button class="btn-primary btn-lg edgeround" data-target="#addressModal" data-toggle="modal">Change address</button>
+         <button style="float: right" class="btn-primary btn-lg edgeround" onclick="addressCheck()">Proceed</button>
           <!-- END CONTENT -->
         </div>
         <!-- BEGIN SIDEBAR & CONTENT -->
@@ -185,6 +209,19 @@
 
     <script src="assets/corporate/scripts/layout.js" type="text/javascript"></script>
     <script src="assets/pages/scripts/bs-carousel.js" type="text/javascript"></script>
+    <script  type="text/javascript">
+        function addressCheck(){
+            //alert("working");
+            <%if(address.equals("Not set")){%>
+            $('#addressModal').modal('show');
+
+            <%}
+              else{%>
+                        alert("We can Proceed");
+                    <%}%>
+        };
+    </script>
+            
     <!-- END PAGE LEVEL JAVASCRIPTS -->
 
     </body>

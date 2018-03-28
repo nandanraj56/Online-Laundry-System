@@ -3,6 +3,12 @@
     Created on : 13 Mar, 2018, 1:54:53 PM
     Author     : nandanraj56
 --%>
+
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.DriverManager"%>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
@@ -64,13 +70,16 @@
     <%
         String namesessioncheck=(String)session.getAttribute("namesession");
         //String emailsession=(String)session.getAttribute("emailsession");
-        
-        
-        
-        
+        /*Class.forName("com.mysql.jdbc.Driver");
+        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/oceno","root","root");
+        String query="select city, region from merchantaddress";
+        Statement pt=con.createStatement();
+        ResultSet rs=pt.executeQuery(query);
+        con.close();*/
         %>
         <% if(namesessioncheck==null){%>
               <%@include file="before-login-header.jsp" %>
+              
        <% }else{%>
              <%@include file="user-header.jsp" %>
         <%}
@@ -120,7 +129,7 @@
                             <option>Indore</option>
                         </select>
                         <select class="form-control" id="region" required="required" style="margin: 20px">
-                            <option>All</option>
+                            
                             <option>Vijay Nagar</option>
                             <option>Bapat</option>
                             <option>Bhawarkua</option>

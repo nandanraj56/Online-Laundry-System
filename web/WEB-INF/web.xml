@@ -12,6 +12,14 @@
         <servlet-name>UserDetailUpdate</servlet-name>
         <servlet-class>UserDetailUpdate</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UserAddress</servlet-name>
+        <servlet-class>UserAddress</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MerchantSignup</servlet-name>
+        <servlet-class>MerchantSignup</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>logincheck</servlet-name>
         <url-pattern>/logincheck</url-pattern>
@@ -23,6 +31,14 @@
     <servlet-mapping>
         <servlet-name>UserDetailUpdate</servlet-name>
         <url-pattern>/UserDetailUpdate</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserAddress</servlet-name>
+        <url-pattern>/UserAddress</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MerchantSignup</servlet-name>
+        <url-pattern>/MerchantSignup</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
