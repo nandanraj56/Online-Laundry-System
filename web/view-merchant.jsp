@@ -4,6 +4,10 @@
     Author     : nandanraj56
 --%>
 
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -60,9 +64,28 @@
   <!-- Theme styles END -->
   
 </head>
+
 <%
         String name=(String)session.getAttribute("namesession");
         String address=(String)session.getAttribute("addresssession");
+        String selectedmerchant=request.getParameter("selectedmerchant");
+        
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/oceno","root","root");
+        String query="select merchantname from merchant where email=?";
+        PreparedStatement pt=con.prepareStatement(query);
+        pt.setString(1,selectedmerchant);
+        ResultSet rs=pt.executeQuery();
+        
+        PreparedStatement pt1=con.prepareStatement("select * from rates where email=?");
+        pt1.setString(1,selectedmerchant);
+        ResultSet rs1=pt1.executeQuery();
+        
+       
+        
+        
+        
+        //con.close();
         if(name==null){%>
                   <%@include file="before-login-header.jsp"%>
                   <script type="text/javascript">
@@ -79,7 +102,7 @@
 
   %>
 <!-- Head END -->
-    <body>
+<body>
        
         <div class="modal fade" id="addressModal" data-backdrop="static" tabindex="-1" style="padding-top: 60px;">
         <div class="modal-dialog">
@@ -122,7 +145,9 @@
         <div class="row margin-bottom-40">
           <!-- BEGIN CONTENT -->
           <div class="col-md-7 col-sm-7">
-            <h2>Merchant name:-</h2>
+              <%if(rs.next()){%>
+              <h2><%=rs.getString(1)%></h2>
+              <%}%>
             <div class="content-page">
               <!-- BEGIN CAROUSEL -->            
               <div class="front-carousel margin-bottom-20">
@@ -148,8 +173,7 @@
             <!-- END CAROUSEL --> 
 
                     <!-- BEGIN INFO BLOCK -->               
-                    <h2>Objective:</h2>
-                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi.</p> 
+                    
                     <h2>About:</h2>
                     <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi.</p> 
                     <!-- END INFO BLOCK -->
@@ -163,21 +187,24 @@
          <h2 class="padding-top-30">Rates</h2>
             
           <h4>Laundry</h4>
-         <pre>Wash & Fold  : Rs-50 / Kgs</pre>
-         <pre>Ironing      : Rs-10 / Kgs</pre>
-         <pre>Wash & Iron  : Rs-85 / Kgs</pre>
+          <%if(rs1.next()){%>
+         <pre>Wash & Fold  : Rs- <%=rs1.getString(1)%> / Kgs</pre>
+         <pre>Ironing      : Rs- <%=rs1.getString(2)%> / Kgs</pre>
+         <pre>Wash & Iron  : Rs- <%=rs1.getString(3)%> / Kgs</pre>
          
          <h4>Dry Cleaning</h4>
-         <pre>Men          : Rs-400 / Kgs</pre>
-         <pre>Women        : Rs-450 / Kgs</pre>
-         <pre>Woolen       : Rs-350 / Kgs</pre>
+         <pre>Men          : Rs- <%=rs1.getString(4)%> / Kgs</pre>
+         <pre>Women        : Rs- <%=rs1.getString(5)%> / Kgs</pre>
+         <pre>Woolen       : Rs- <%=rs1.getString(6)%> / Kgs</pre>
          <!--End of rates-->
+         <%}con.close();%>
          <div class="margin-top-10"><strong>Pickup address: </strong><%out.println(address);%></div><br>
          <button class="btn-primary btn-lg edgeround" data-target="#addressModal" data-toggle="modal">Change address</button>
          <button style="float: right" class="btn-primary btn-lg edgeround" onclick="addressCheck()">Proceed</button>
+         </div>
           <!-- END CONTENT -->
         </div>
-        <!-- BEGIN SIDEBAR & CONTENT -->
+        <!-- End SIDEBAR & CONTENT -->
       </div>
     </div>
 

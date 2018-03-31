@@ -58,7 +58,7 @@
         <!-- BEGIN HEADER -->
     <div class="header">
       <div class="container">
-        <a class="site-logo" href="index.html"><img src="assets/corporate/img/logos/logo.png" alt="Oceno Laundry"></a>
+        <a class="site-logo" href="index.jsp"><img src="assets/corporate/img/logos/logo.png" alt="Oceno Laundry"></a>
 
         <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
 
@@ -164,6 +164,7 @@
                                   <input type="password" class="form-control edgeround" id="pwd1" placeholder="Enter password" name="pwd1" required="Field empty" >
                                 </div>
                                 <h5 id="regstatus"></h5>
+                                <h5 class="text-left"><a  style="color: #19C986 !important" href="merchant-signup.jsp">Merchant Signup</a></h5>
                                 <center> <button type="submit" class="btn btn-primary btn-lg edgeround" onclick="userRegistration()">Signup</button></center>
                           </form>
                         </div>

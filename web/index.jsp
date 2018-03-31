@@ -123,12 +123,12 @@
             
             <!--Start searchbox-->
          <div class="container incenter">
-               <form id="searchForm" class=" form-inline edgeround" style="background-color: rgba(255, 0, 0, 0.2);padding: 2px !important;">
+               <form action="merchant-search.jsp" id="searchForm" class=" form-inline edgeround" style="background-color: rgba(255, 0, 0, 0.2);padding: 2px !important;">
                   <div class="form-group-lg input-group-lg ">
-                        <select class="form-control" id="city" required="required" style="margin: 20px">
+                        <select class="form-control" id="city" required="required" style="margin: 20px" name="selectedcity">
                             <option>Indore</option>
                         </select>
-                        <select class="form-control" id="region" required="required" style="margin: 20px">
+                        <select class="form-control" id="region" required="required" style="margin: 20px" name="selectedregion">
                             
                             <option>Vijay Nagar</option>
                             <option>Bapat</option>

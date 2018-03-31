@@ -1,16 +1,25 @@
 <%-- 
-    Document   : before-login-header
-    Created on : 19 Mar, 2018, 9:27:11 PM
+    Document   : merchant-search
+    Created on : 30 Mar, 2018, 11:39:44 PM
     Author     : nandanraj56
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-         
-         
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+
+<!-- Head BEGIN -->
+<head>
+  <meta charset="utf-8">
+  <title>Oceno</title>
 
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -53,80 +62,79 @@
   <link href="assets/corporate/css/custom.css" rel="stylesheet">
  <!-- <link href="assets/corporate/css/modal_view.css" rel="stylesheet"> -->
   <!-- Theme styles END -->
-    </head>
+</head>
+<!-- Head END -->
+
+<%//String name=(String)session.getAttribute("namesession");
+        
+        String selectedcity=(String)request.getParameter("selectedcity");
+        String selectedregion=(String)request.getParameter("selectedregion");
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/oceno","root","root");
+        String query="select merchant.merchantname,merchant.email from merchant inner join merchantaddress on merchant.email = merchantaddress.email where city=? and region=?";
+        PreparedStatement pt2=con.prepareStatement(query);
+        pt2.setString(1,selectedcity);
+        pt2.setString(2,selectedregion);
+       
+        ResultSet rs=pt2.executeQuery();
+%>
+<body class="corporate">
     <%
-        String nameheader=(String)session.getAttribute("namesession");
-        String emailsession=(String)session.getAttribute("emailsession");
-        
-        
-        
+        String namesessioncheck=(String)session.getAttribute("namesession");
         
         %>
-    <body class="corporate">
-        <!-- BEGIN HEADER -->
-    <div class="header">
+        <% if(namesessioncheck==null){%>
+              <%@include file="before-login-header.jsp" %>
+              
+       <% }else{%>
+             <%@include file="user-header.jsp" %>
+        <%}
+
+        %>
+        
+        
+    <div class="main">
       <div class="container">
-        <a class="site-logo" href="index.jsp"><img src="assets/corporate/img/logos/logo.png" alt="Oceno Laundry"></a>
+    <!-- BEGIN SIDEBAR & CONTENT -->
+        <div class="row margin-bottom-40">
+          <!-- BEGIN CONTENT -->
+          <div class="col-md-12">
+            <h1>Available Merchants</h1>
+            <div class="content-page">
+              <%while(rs.next()){%>
+              
+              <div class="search-result-item">
+                <h4><a href="javascript:merchantselect('<%=rs.getString(2)%>')"><%=rs.getString(1)%></a></h4>
+                
+                
+                <p>Metronic is a responsive admin dashboard template powered with Twitter Bootstrap Framework for admin and backend applications. Metronic has a clean and intuitive metro style design which makes your next project look awesome and yet user friendly..</p>
+                
+              </div>
+              <%}con.close();%>
+              
 
-        <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
+              
 
-        <!-- BEGIN NAVIGATION -->
-        <div class="header-navigation pull-right font-transform-inherit">
-          <ul>
-             <li>
-                 <a href="index.jsp">
-                Home 
-              </a>
-               
-            </li>
-            
-            <li>
-                <a href="#">
-             
-                Services
-              </a>
-            </li>
-            <li>
-                <a href="#">
-             
-                Track order
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                Help 
-              </a>
-            </li>
-           <!-- <li><a href="#">Place order</a></li>-->
-            <li class="dropdown active">
-                <a class="dropdown-toggle" data-toogle="dropdown" data-target="#" href="javascript:;">
-                    <%out.print(nameheader);%>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a href="user-profile.jsp">My Profile</a></li>
-                    <li><a href="#">Orders</a></li>
-                    <li><a href="#">Notifications</a></li>
-                    <li><a href="logout.jsp">Signout!</a></li>
-                    
-                </ul>
-            </li>
-           <!-- <li>
-                <a href="#" style="padding-bottom: 0px;"> <i class="fa  fa-shopping-cart" aria-hidden="true" style="color: #F60000;font-size: 40px"></i> </a>
-            </li>-->
-            
-
-          </ul>
+            </div>
+          </div>
+          <!-- END CONTENT -->
         </div>
-        <!-- END NAVIGATION -->
       </div>
     </div>
-    
-    
-        <!-- Header END -->
+        
+    <%@include file="footer.jsp"%> 
         
         
         
-    <!-- Load javascripts at bottom, this will reduce page load time -->
+        
+        
+        
+        
+        
+        
+        
+        
+        <!-- Load javascripts at bottom, this will reduce page load time -->
     <!-- BEGIN CORE PLUGINS (REQUIRED FOR ALL PAGES) -->
     <!--[if lt IE 9]>
     <script src="assets/plugins/respond.min.js"></script>
@@ -147,12 +155,24 @@
         jQuery(document).ready(function() {
             Layout.init();    
             Layout.initOWL();
-            Layout.initTwitter();
-            Layout.initFixHeaderWithPreHeader(); /* Switch On Header Fixing (only if you have pre-header) */
+           // Layout.initTwitter();
+           // Layout.initFixHeaderWithPreHeader(); /* Switch On Header Fixing (only if you have pre-header) */
             Layout.initNavScrolling();
         });
     </script>
-    
+    <script>
+        $('#carousel-example-generic').carousel({
+        interval:5000,
+        pause: null
+    });
+    </script>
+    <script type="text/javascript">
+        function merchantselect(selectedmerchant){
+            //alert("working");
+            window.location.href="view-merchant.jsp?selectedmerchant="+selectedmerchant;
+        };
+    </script>
     <!-- END PAGE LEVEL JAVASCRIPTS -->
-    </body>
+</body>
+<!-- END BODY -->
 </html>
