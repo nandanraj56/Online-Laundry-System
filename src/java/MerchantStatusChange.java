@@ -19,10 +19,13 @@ import javax.servlet.http.HttpSession;
  *
  * @author nandanraj56
  */
-public class UserAddress extends HttpServlet {
+public class MerchantStatusChange extends HttpServlet {
+
+    
+   
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out=response.getWriter();
@@ -30,26 +33,29 @@ public class UserAddress extends HttpServlet {
         try{
             Class.forName("com.mysql.jdbc.Driver");
             con=DriverManager.getConnection("jdbc:mysql://localhost:3306/oceno", "root", "root");
-            String address=request.getParameter("address");
+            String updatestatus=request.getParameter("statusupdate");
+            String orderid=request.getParameter("orderid");
             HttpSession session=request.getSession(false);
             String email=(String)session.getAttribute("emailsession");
-            PreparedStatement pt=con.prepareStatement("update reg set address=?  where email=?");
-            pt.setString(1,address);
+            //out.print("hi");
+            PreparedStatement pt=con.prepareStatement("update orders set status=?  where email=? and order_id=?");
+            pt.setString(1,updatestatus);
             pt.setString(2,email); 
+            pt.setString(3,orderid); 
             int a;
             a = (int)pt.executeUpdate();
             if(a>0){
-                session.setAttribute("addresssession", address);
+                //session.setAttribute("addresssession", address);
                 out.println("<script type=\"text/javascript\">");
-                out.println("alert('Address Updated');");
-                out.println("location='view-merchant.jsp';");
+                out.println("alert('Status Updated');");
+                out.println("location='merchant-dashboard.jsp';");
                 out.println("</script>");
                 //request.getRequestDispatcher("view-merchant.jsp").forward(request,response);
             }
             else{
                 out.println("<script type=\"text/javascript\">");
                 out.println("alert('Server Error');");
-                out.println("location='view-merchant.jsp';");
+                out.println("location='merchant-dashboard.jsp';");
                 out.println("</script>");
                 //request.getRequestDispatcher("view-merchant.jsp").forward(request,response);
             }

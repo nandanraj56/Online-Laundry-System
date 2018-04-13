@@ -72,7 +72,7 @@
                
             </li>
             
-            <li>
+            <!--<li>
                 <a href="#">
              
                 Services
@@ -89,7 +89,7 @@
                 Help 
               </a>
             </li>
-            <li><a href="#">Place order</a></li>
+            <li><a href="#">Place order</a></li>-->
             <li>
                 <a href="#" data-target="#loginModal" data-toggle="modal">
                     Login / Signup
@@ -233,6 +233,17 @@
                          alert("Login Done");
                          //document.location.reload(true);
                          location='index.jsp';
+                     }
+                     else if(xmlhttp.responseText==="merchant"){
+                         alert("Merchant Login Done");
+                         //document.location.reload(true);
+                         location='merchant-dashboard.jsp';
+                         
+                     }else if(xmlhttp.responseText==="admin"){
+                         alert("Admin Login Done");
+                         //document.location.reload(true);
+                         location='admin-dashboard.jsp';
+                         
                      }
                      else{
                          document.getElementById("loginstatus").innerHTML = xmlhttp.responseText;

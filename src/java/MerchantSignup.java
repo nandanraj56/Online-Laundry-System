@@ -42,6 +42,7 @@ public class MerchantSignup extends HttpServlet {
             String email=request.getParameter("email");
             String phone=request.getParameter("phone");
             String password=request.getParameter("pwd");
+            String about=request.getParameter("about");
             String address=request.getParameter("address");
             String city=request.getParameter("city");
             String region=request.getParameter("region");
@@ -51,11 +52,12 @@ public class MerchantSignup extends HttpServlet {
             String men=request.getParameter("men");
             String women=request.getParameter("women");
             String woolen=request.getParameter("woolen");
-            PreparedStatement pt=con.prepareStatement("insert into merchant values(?,?,?,?,'0')");
+            PreparedStatement pt=con.prepareStatement("insert into merchant values(?,?,?,?,'0',?,'0')");
             pt.setString(1,name);
             pt.setString(2,email);
             pt.setString(3,phone);
             pt.setString(4,password);
+            pt.setString(5,about);
             PreparedStatement pt1=con.prepareStatement("insert into merchantaddress values(?,?,?,?)");
             pt1.setString(1,address);
             pt1.setString(2,city);
@@ -75,7 +77,7 @@ public class MerchantSignup extends HttpServlet {
             pt2.executeUpdate();
             
                 out.println("<script type=\"text/javascript\">");
-                out.println("alert('Account Created,Wait for activation');");
+                out.println("alert('Account Created');");
                 out.println("location='index.jsp';");
                 out.println("</script>");
             con.close();

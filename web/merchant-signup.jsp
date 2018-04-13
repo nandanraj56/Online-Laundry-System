@@ -118,17 +118,21 @@
                         <label for="region" class="col-lg-4 control-label">Region <span class="require">*</span></label>
                         <div class="col-lg-8">
                           <select class="form-control" id="region" required="required" name="region">
-                            
                             <option>Vijay Nagar</option>
                             <option>Bapat</option>
                             <option>Bhawarkua</option>
                             <option>Dewas Naka</option>
-                        </select>
+                          </select>
                         </div>
                       </div>
-                      
+                      <div class="form-group">
+                        <label for="about" class="col-lg-4 control-label">About <span class="require">*</span></label>
+                        <div class="col-lg-8">
+                          <input type="text" class="form-control" name="about" required="required">
+                        </div>
+                      </div>
                     </fieldset>
-                    <fieldset>
+                    <!--<fieldset>
                       <legend>Images</legend>
                       <div class="form-group">
                         <label  class="col-lg-4 control-label">Image 1 <span class="require">*</span></label>
@@ -149,9 +153,9 @@
                         </div>
                       </div>
                       
-                    </fieldset>
+                    </fieldset>-->
                     <fieldset>
-                      <legend>Rates Description (Rs/Kgs)</legend>
+                      <legend>Rates Description (Rs / Item)</legend>
                       <div class="form-group">
                         <label  class="col-lg-4 control-label">Wash & Fold <span class="require">*</span></label>
                         <div class="col-lg-8">

@@ -20,6 +20,34 @@
         <servlet-name>MerchantSignup</servlet-name>
         <servlet-class>MerchantSignup</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DoOrder</servlet-name>
+        <servlet-class>DoOrder</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MerchantStatusChange</servlet-name>
+        <servlet-class>MerchantStatusChange</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MerchantProfileUpdate</servlet-name>
+        <servlet-class>MerchantProfileUpdate</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MerchantRatesUpdate</servlet-name>
+        <servlet-class>MerchantRatesUpdate</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminUserBlock</servlet-name>
+        <servlet-class>AdminMerchantBlock</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminMerchantBlock</servlet-name>
+        <servlet-class>AdminMerchantBlock</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminUsersBlock</servlet-name>
+        <servlet-class>AdminUsersBlock</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>logincheck</servlet-name>
         <url-pattern>/logincheck</url-pattern>
@@ -39,6 +67,34 @@
     <servlet-mapping>
         <servlet-name>MerchantSignup</servlet-name>
         <url-pattern>/MerchantSignup</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DoOrder</servlet-name>
+        <url-pattern>/DoOrder</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MerchantStatusChange</servlet-name>
+        <url-pattern>/MerchantStatusChange</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MerchantProfileUpdate</servlet-name>
+        <url-pattern>/MerchantProfileUpdate</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MerchantRatesUpdate</servlet-name>
+        <url-pattern>/MerchantRatesUpdate</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminUserBlock</servlet-name>
+        <url-pattern>/AdminUserBlock</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminMerchantBlock</servlet-name>
+        <url-pattern>/AdminMerchantBlock</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminUsersBlock</servlet-name>
+        <url-pattern>/AdminUsersBlock</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -1,0 +1,181 @@
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+
+<html lang="en">
+<!--<![endif]-->
+
+<!-- Head BEGIN -->
+<head>
+  <meta charset="utf-8">
+  <title>Oceno</title>
+
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <meta content="Metronic Shop UI description" name="description">
+  <meta content="Metronic Shop UI keywords" name="keywords">
+  <meta content="keenthemes" name="author">
+
+  <meta property="og:site_name" content="-CUSTOMER VALUE-">
+  <meta property="og:title" content="-CUSTOMER VALUE-">
+  <meta property="og:description" content="-CUSTOMER VALUE-">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="-CUSTOMER VALUE-"><!-- link to image for socio -->
+  <meta property="og:url" content="-CUSTOMER VALUE-">
+
+  <link rel="shortcut icon" href="favicon.ico">
+
+  <!-- Fonts START -->
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css">
+  <!-- Fonts END -->
+
+  <!-- Global styles START -->          
+  <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Global styles END --> 
+   
+  <!-- Page level plugin styles START -->
+  <link href="assets/pages/css/animate.css" rel="stylesheet">
+  <link href="assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
+  <link href="assets/plugins/owl.carousel/assets/owl.carousel.css" rel="stylesheet">
+  <!-- Page level plugin styles END -->
+
+  <!-- Theme styles START -->
+  <link href="assets/pages/css/components.css" rel="stylesheet">
+  <link href="assets/pages/css/slider.css" rel="stylesheet">
+  <link href="assets/corporate/css/style.css" rel="stylesheet">
+  <link href="assets/corporate/css/style-responsive.css" rel="stylesheet">
+  <link href="assets/corporate/css/themes/red.css" rel="stylesheet" id="style-color">
+  <link href="assets/corporate/css/custom.css" rel="stylesheet">
+  <!-- Theme styles END -->
+  
+  <%
+        String name=(String)session.getAttribute("namesession");
+        String email=(String)session.getAttribute("emailsession");
+        String phone=(String)session.getAttribute("phonesession");
+        String pass=(String)session.getAttribute("passwordsession");
+        String address=(String)session.getAttribute("addresssession");
+        String city=(String)session.getAttribute("citysession");
+        String region=(String)session.getAttribute("regionsession");
+        String about=(String)session.getAttribute("aboutsession");
+        if(name==null){
+                  response.sendRedirect("index.jsp");
+       }else{%>
+        <%@include file="merchant-header.jsp" %>
+            <%}
+
+  %>
+  
+</head>
+<!-- Head END -->
+
+    
+<body class="corporate">
+    <div class="container">
+        <div>
+            <center><h1>Account Information</h1></center>
+            <div   class="col-lg-offset-3 col-lg-6 outline-box">
+                
+                <div id="detail" style="display:block">
+                    <button onclick="editdetails()" class="pull-right btn btn-basic edgeround btn-sm">Edit</button>
+                    <h3>Merchant Name</h3>
+                    <h5><%out.print(name);%></h5><hr>
+                    <h3>Email</h3>
+                    <h5><%out.print(email);%></h5><hr>
+                    <h3>Phone</h3>
+                    <h5><%out.print(phone);%></h5><hr>
+                    <h3>Password</h3>
+                    <h5><%out.print("********");%></h5><hr>
+                    <h3>Address</h3>
+                    <h5><%out.print(address);%></h5><hr>
+                    <h3>City</h3>
+                    <h5><%out.print(city);%></h5><hr>
+                    <h3>Region</h3>
+                    <h5><%out.print(region);%></h5><hr>
+                    <h3>About</h3>
+                    <h5><%out.print(about);%></h5>
+                </div>
+                
+                <div id="editdetail" style="display:none">
+                    <button onclick="editdetails()" class="pull-right btn btn-basic edgeround btn-sm">Cancel</button>
+                    <form action="MerchantProfileUpdate" method="post"> 
+                        <h3>Name:</h3> 
+                        <h5><input type="text" value="<%out.print(name);%>" name="name"></h5><hr> 
+                        <!--<h3>Email</h3> 
+                        <h5><input type="text" value="" name="email"></h5><hr> -->
+                        <h3>Phone:</h3> 
+                        <h5><input type="text" value="<%out.print(phone);%>" name="phone"></h5><hr> 
+                        <h3>Password:</h3> 
+                        <h5><input type="password" value="<%out.print(pass);%>" name="pwd"></h5><hr>
+                        <h3>Address:</h3> 
+                        <h5><textarea name="address" class="col-lg-12 margin-bottom-15"><%out.print(address);%></textarea> </h5>
+                        <h3>City:</h3> 
+                        <h5><select class="form-control" id="city" required="required" name="city">
+                            <option <%if(city=="Indore"){out.print("selected");}%>>Indore</option>
+                            </select>
+                        </h5><hr>
+                        <h3>Region:</h3> 
+                        <h5><select class="form-control" id="region" required="required" name="region">
+                            <option>Vijay Nagar</option>
+                            <option>Bapat</option>
+                            <option>Bhawarkua</option>
+                            <option>Dewas Naka</option>
+                            </select></h5><hr>
+                        <h3>About:</h3>
+                        <h5><textarea name="about" class="col-lg-12 margin-bottom-15"><%out.print(about);%></textarea> </h5>
+                       <input class="btn  edgeround btn-primary" type="submit" value="Update"> 
+                   </form>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <%@include file="footer.jsp" %>
+    <!-- Load javascripts at bottom, this will reduce page load time -->
+    <!-- BEGIN CORE PLUGINS (REQUIRED FOR ALL PAGES) -->
+    <!--[if lt IE 9]>
+    <script src="assets/plugins/respond.min.js"></script>
+    <![endif]--> 
+    <script src="assets/plugins/jquery.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>      
+    <script src="assets/corporate/scripts/back-to-top.js" type="text/javascript"></script>
+    <!-- END CORE PLUGINS -->
+
+    <!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
+    <script src="assets/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script><!-- pop up -->
+    <script src="assets/plugins/owl.carousel/owl.carousel.min.js" type="text/javascript"></script><!-- slider for products -->
+
+    <script src="assets/corporate/scripts/layout.js" type="text/javascript"></script>
+    <script src="assets/pages/scripts/bs-carousel.js" type="text/javascript"></script>
+    <script type="text/javascript">
+       /* jQuery(document).ready(function() {
+            //Layout.init();    
+            Layout.initOWL();
+            Layout.initTwitter();
+            //Layout.initFixHeaderWithPreHeader(); /* Switch On Header Fixing (only if you have pre-header) 
+            //Layout.initNavScrolling(); 
+        }); */
+    </script>
+    <script type="text/javascript">
+        function editdetails(){
+            //alert("working");
+            var detail=document.getElementById("detail");
+            var editdetail=document.getElementById("editdetail");
+            if(detail.style.display === "block"){
+                //alert("if");
+                detail.style.display ="none";
+                editdetail.style.display = "block";
+            }else{
+                //alert("else");
+                editdetail.style.display = "none";
+                detail.style.display ="block";   
+            }   
+        }
+        
+        
+    </script>
+    <!-- END PAGE LEVEL JAVASCRIPTS -->
+    </body>
+</html>

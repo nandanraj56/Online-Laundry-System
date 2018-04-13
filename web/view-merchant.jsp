@@ -69,10 +69,9 @@
         String name=(String)session.getAttribute("namesession");
         String address=(String)session.getAttribute("addresssession");
         String selectedmerchant=request.getParameter("selectedmerchant");
-        
         Class.forName("com.mysql.jdbc.Driver");
         Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/oceno","root","root");
-        String query="select merchantname from merchant where email=?";
+        String query="select merchantname,about from merchant where email=?";
         PreparedStatement pt=con.prepareStatement(query);
         pt.setString(1,selectedmerchant);
         ResultSet rs=pt.executeQuery();
@@ -122,6 +121,7 @@
                     <label for="comment">Enter Full Address:</label>
                     <form action="UserAddress">
                         <textarea class="form-control" rows="5" id="address" name="address"><%out.println(address);%></textarea>
+                        
                         <center><input type="submit" value="Done" class="btn btn-primary btn-lg edgeround margin-top-20"></center>
                     </form>
                     
@@ -175,7 +175,7 @@
                     <!-- BEGIN INFO BLOCK -->               
                     
                     <h2>About:</h2>
-                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi.</p> 
+                    <p><%=rs.getString(2)%></p> 
                     <!-- END INFO BLOCK -->
 
                                     
@@ -188,18 +188,18 @@
             
           <h4>Laundry</h4>
           <%if(rs1.next()){%>
-         <pre>Wash & Fold  : Rs- <%=rs1.getString(1)%> / Kgs</pre>
-         <pre>Ironing      : Rs- <%=rs1.getString(2)%> / Kgs</pre>
-         <pre>Wash & Iron  : Rs- <%=rs1.getString(3)%> / Kgs</pre>
+         <pre>Wash & Fold  : Rs- <%=rs1.getString(1)%> x 1</pre>
+         <pre>Ironing      : Rs- <%=rs1.getString(2)%> x 1</pre>
+         <pre>Wash & Iron  : Rs- <%=rs1.getString(3)%> x 1</pre>
          
          <h4>Dry Cleaning</h4>
-         <pre>Men          : Rs- <%=rs1.getString(4)%> / Kgs</pre>
-         <pre>Women        : Rs- <%=rs1.getString(5)%> / Kgs</pre>
-         <pre>Woolen       : Rs- <%=rs1.getString(6)%> / Kgs</pre>
+         <pre>Men          : Rs- <%=rs1.getString(4)%> x 1</pre>
+         <pre>Women        : Rs- <%=rs1.getString(5)%> x 1</pre>
+         <pre>Woolen       : Rs- <%=rs1.getString(6)%> x 1</pre>
          <!--End of rates-->
          <%}con.close();%>
          <div class="margin-top-10"><strong>Pickup address: </strong><%out.println(address);%></div><br>
-         <button class="btn-primary btn-lg edgeround" data-target="#addressModal" data-toggle="modal">Change address</button>
+         <!--<button class="btn-primary btn-lg edgeround" data-target="#addressModal" data-toggle="modal">Change address</button>-->
          <button style="float: right" class="btn-primary btn-lg edgeround" onclick="addressCheck()">Proceed</button>
          </div>
           <!-- END CONTENT -->
@@ -240,11 +240,13 @@
         function addressCheck(){
             //alert("working");
             <%if(address.equals("Not set")){%>
-            $('#addressModal').modal('show');
-
+            //$('#addressModal').modal('show');
+               alert("Address not set")
             <%}
               else{%>
-                        alert("We can Proceed");
+                    var selectedmerchant="<%=selectedmerchant%>";
+                    window.location.href="order.jsp?selectedmerchant="+selectedmerchant;
+                    //alert(selectedmerchant);
                     <%}%>
         };
     </script>

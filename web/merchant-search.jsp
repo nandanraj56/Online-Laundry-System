@@ -71,7 +71,7 @@
         String selectedregion=(String)request.getParameter("selectedregion");
         Class.forName("com.mysql.jdbc.Driver");
         Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/oceno","root","root");
-        String query="select merchant.merchantname,merchant.email from merchant inner join merchantaddress on merchant.email = merchantaddress.email where city=? and region=?";
+        String query="select merchant.merchantname,merchant.email,merchant.about,merchant.userblock from merchant inner join merchantaddress on merchant.email = merchantaddress.email where city=? and region=?";
         PreparedStatement pt2=con.prepareStatement(query);
         pt2.setString(1,selectedcity);
         pt2.setString(2,selectedregion);
@@ -101,16 +101,15 @@
           <div class="col-md-12">
             <h1>Available Merchants</h1>
             <div class="content-page">
-              <%while(rs.next()){%>
-              
-              <div class="search-result-item">
+              <%while(rs.next()){
+                if(rs.getString(4).equals("0")){%>
+                <div class="search-result-item">
                 <h4><a href="javascript:merchantselect('<%=rs.getString(2)%>')"><%=rs.getString(1)%></a></h4>
+                <p><%=rs.getString(3)%></p>
+                </div>
                 
                 
-                <p>Metronic is a responsive admin dashboard template powered with Twitter Bootstrap Framework for admin and backend applications. Metronic has a clean and intuitive metro style design which makes your next project look awesome and yet user friendly..</p>
-                
-              </div>
-              <%}con.close();%>
+              <%}}con.close();%>
               
 
               

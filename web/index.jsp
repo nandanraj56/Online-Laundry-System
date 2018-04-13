@@ -208,7 +208,7 @@
         </div>
         <!-- END STEPS -->
 
-        <!-- BEGIN CLIENTS -->
+        <!-- BEGIN CLIENTS 
         <div class="row margin-bottom-40 our-clients">
           <div class="col-md-3">
             <h2><a href="javascript:;">Our Clients</a></h2>

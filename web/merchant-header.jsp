@@ -1,8 +1,3 @@
-<%-- 
-    Document   : before-login-header
-    Created on : 19 Mar, 2018, 9:27:11 PM
-    Author     : nandanraj56
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -74,30 +69,21 @@
         <div class="header-navigation pull-right font-transform-inherit">
           <ul>
              <li>
-                 <a href="index.jsp">
-                Home 
+                 <a href="merchant-dashboard.jsp">
+                Dashboard 
               </a>
                
             </li>
             
             <li>
-                <a href="#">
+                <a href="merchant-new-orders.jsp">
              
-                Services
+                New orders
               </a>
             </li>
-            <li>
-                <a href="orders.jsp">
-             
-                Orders
-              </a>
-            </li>
-            <li>
-              <!--<a href="#">
-                Help 
-              </a>-->
-            </li>
-            <li><a href="user-profile.jsp">My Profile</a></li>
+            
+           
+            <li><a href="merchant-profile.jsp">My Profile</a></li>
            <!-- <li><a href="#">Place order</a></li>-->
             <li class="dropdown active">
                 <a class="dropdown-toggle" data-toogle="dropdown" data-target="#" href="javascript:;">

@@ -21,7 +21,7 @@
             <h2>About us</h2>
             <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam sit nonummy nibh euismod tincidunt ut laoreet dolore magna aliquarm erat sit volutpat.</p>
 
-            <div class="photo-stream">
+            <!--<div class="photo-stream">
               <h2>Photos Stream</h2>
               <ul class="list-unstyled">
                 <li><a href="javascript:;"><img alt="" src="assets/pages/img/people/img5-small.jpg"></a></li>
@@ -40,7 +40,7 @@
                 <li><a href="javascript:;"><img alt="" src="assets/pages/img/people/img2-large.jpg"></a></li>
                 <li><a href="javascript:;"><img alt="" src="assets/pages/img/works/img2.jpg"></a></li>
               </ul>                    
-            </div>
+            </div>-->
           </div>
           <!-- END BOTTOM ABOUT BLOCK -->
 
@@ -71,12 +71,12 @@
           </div>
           <!-- END BOTTOM CONTACTS -->
 
-          <!-- BEGIN TWITTER BLOCK --> 
+          <!-- BEGIN Image BLOCK --> 
           <div class="col-md-4 col-sm-6 pre-footer-col">
               <a href="index.html"><img class="img-responsive" src="assets/pages/img/footerlogo.png" alt="Oceno Laundry"></a>
             
           </div>
-          <!-- END TWITTER BLOCK -->
+          <!-- END Image BLOCK -->
         </div>
       </div>
     </div>
